@@ -1,0 +1,17 @@
+{% for evento in eventos %}
+    <div class="card mb-4" style="border: 1px solid #dc3545;">
+        <div class="card-body">
+            <h2 class="card-title">{{ evento.nome }}</h2>
+            <p class="card-text">{{ evento.descricao }}</p>
+            <a href="{% url 'detalhes_evento' evento.id %}"
+               hx-get="{% url 'detalhes_evento' evento.id %}"
+               hx-target="#conteudo-evento"
+               hx-indicator="#spinner"
+               class="btn btn-danger">Ver Detalhes</a>
+        </div>
+    </div>
+{% empty %}
+    <div class="alert alert-warning" role="alert">
+        Nenhum evento encontrado.
+    </div>
+{% endfor %}

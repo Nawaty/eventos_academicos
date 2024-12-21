@@ -1,0 +1,48 @@
+<!-- templates/eventos/detalhes_evento.html -->
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">{{ evento.nome }}</h2>
+        <p>{{ evento.descricao }}</p>
+        
+        <div class="event-details">
+            <p><strong>Local:</strong> {{ evento.local }}</p>
+            <p><strong>Data Início:</strong> {{ evento.data_inicio }}</p>
+            <p><strong>Data Fim:</strong> {{ evento.data_fim }}</p>
+            <p><strong>Valor:</strong> R$ {{ evento.valor_inscricao }}</p>
+        </div>
+        
+        {% if user.tipo_usuario == 'PROFESSOR' and evento.organizador == user %}
+            <div class="professor-actions mt-4">
+                <h3>Ações do Professor</h3>
+                <a href="{% url 'listar_participantes' evento.id %}" class="btn btn-info">Ver Participantes</a>
+            </div>
+        {% else %}
+            {% if not ja_inscrito %}
+            <button hx-get="{% url 'inscrever_evento' evento.id %}"
+                    hx-target="#status-inscricao"
+                    class="btn btn-primary">
+                Inscrever-se
+                </button>
+                <div id="status-inscricao"></div>
+            {% else %}
+                <div class="alert alert-success">Você já está inscrito neste evento!</div>
+            {% endif %}
+        {% endif %}
+        
+        <div id="status-inscricao"></div>
+        
+        {% if palestras %}
+            <h3 class="mt-4">Palestras</h3>
+            <div class="list-group">
+                {% for palestra in palestras %}
+                    <div class="list-group-item">
+                        <h5>{{ palestra.titulo }}</h5>
+                        <p>Palestrante: {{ palestra.palestrante.get_full_name }}</p>
+                        <p>Horário: {{ palestra.data_hora }}</p>
+                        <p>Duração: {{ palestra.duracao }} minutos</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>

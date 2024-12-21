@@ -1,0 +1,56 @@
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado de Participação</title>
+    {% bootstrap_css %}
+    <style>
+        .certificado {
+            border: 3px solid #dc3545;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 40px;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .certificado-titulo {
+            color: #dc3545;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .certificado-conteudo {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .certificado-rodape {
+            margin-top: 30px;
+            border-top: 1px solid #dc3545;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="certificado">
+            <h1 class="certificado-titulo">Certificado de Participação</h1>
+            
+            <div class="certificado-conteudo">
+                <p>Certificamos que</p>
+                <h2>{{ certificado.nome_participante }}</h2>
+                <p>participou do evento</p>
+                <h3>{{ certificado.evento.nome }}</h3>
+                <p>realizado em {{ certificado.evento.data_inicio|date:"d/m/Y" }}</p>
+                
+                <div class="certificado-rodape">
+                    <p>Data de Emissão: {{ certificado.data_emissao|date:"d/m/Y" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% bootstrap_javascript %}
+</body>
+</html>

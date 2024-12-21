@@ -1,0 +1,39 @@
+# Dependências Principais do Django
+Django==4.2.7
+django-htmx==1.17.0
+requests==2.31.0
+
+# Dependências de Desenvolvimento
+python-decouple==3.8
+Pillow>=10.4.0 # Para manipulação de imagens (útil para certificados)
+
+# Ferramentas de Segurança
+django-cors-headers==4.3.1
+django-filter==23.5
+
+# Ferramentas de Autenticação (opcional, mas recomendado)
+django-allauth==0.58.2
+
+# Ferramentas para Geração de PDFs (para certificados)
+reportlab==4.0.7
+
+# Dependências de Teste
+pytest==7.4.3
+pytest-django==4.7.0
+coverage==7.3.2
+
+# Ferramentas de Desenvolvimento
+ipython==8.17.2
+django-extensions==3.2.3
+
+# Ferramentas de Documentação da API (opcional)
+drf-yasg==1.21.7  # Swagger para documentação
+
+# Ferramentas de Envio de E-mail
+django-anymail==10.2
+
+# Dependências para Webhooks
+aiohttp==3.9.1  # Para requisições assíncronas
+
+# Utilitários
+python-dateutil==2.8.2
